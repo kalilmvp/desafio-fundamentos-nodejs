@@ -24,28 +24,6 @@ class TransactionsRepository {
   }
 
   public getBalance(): Balance {
-    // MODO NOOB DE SE FAZER
-    /* if (this.transactions && this.transactions.length === 0) {
-      return {
-        income: 0,
-        outcome: 0,
-        total: 0,
-      };
-    }
-    const transIncomeValue = this.transactions.map(trans => {
-      return trans.type === 'income' ? trans.value : 0;
-    });
-    const transOutComeValue = this.transactions.map(trans => {
-      return trans.type === 'outcome' ? trans.value : 0;
-    });
-    const income = transIncomeValue.reduce((acc, current) => acc + current);
-    const outcome = transOutComeValue.reduce((acc, current) => acc + current);
-    return {
-      income,
-      outcome,
-      total: income - outcome,
-    }; */
-    // MODO MAIS PROFISSIONAL DE SE FAZER
     const { income, outcome } = this.transactions.reduce(
       (accumulator: Balance, transaction: Transaction) => {
         if (transaction.type === 'income') {
